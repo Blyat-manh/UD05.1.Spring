@@ -10,42 +10,36 @@
   <packaging>war</packaging>
   <name>Empresa</name>
   
-  <!-- Parent Spring Boot -->
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.1.RELEASE</version> <!-- Usa la versión adecuada -->
-    <relativePath/> <!-- lookup parent from repository -->
+    <version>2.3.1.RELEASE</version>
+    <relativePath/>
   </parent>
 
   <dependencies>
-    <!-- Dependencias de Spring Boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- Dependencia para Spring Data JPA -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
-    <!-- Dependencia para MySQL -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.19</version>
     </dependency>
 
-    <!-- Dependencia para JSTL (soporte de etiquetas en JSP) -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
 
-    <!-- Dependencia de Tomcat Jasper (para JSP) -->
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-jasper</artifactId>
@@ -53,28 +47,24 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Dependencia para el empaquetado del WAR -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-tomcat</artifactId>
       <scope>provided</scope>
     </dependency>
 
-    <!-- Dependencia para JDBC o Spring ORM (si usas JPA o JDBC) -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-orm</artifactId>
       <version>5.2.5.RELEASE</version>
     </dependency>
 
-    <!-- Dependencia de conexión a base de datos con DBCP2 (si es necesario) -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-dbcp2</artifactId>
       <version>2.7.0</version>
     </dependency>
 
-    <!-- Dependencia para el Servlet API -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -85,7 +75,6 @@
 
   <build>
     <plugins>
-      <!-- Plugin para empaquetar el WAR en vez de un JAR (si no usas Spring Boot DevTools) -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
