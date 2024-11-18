@@ -15,30 +15,25 @@ public class EmpleadoDAO {
     @Autowired
     private EmpleadoRepository empleadoRepository;
 
-    // Método para obtener todos los empleados
     public List<Empleado> obtenerEmpleado() {
-        return empleadoRepository.findAll();  // Spring Data JPA proporciona el método findAll() por defecto
+        return empleadoRepository.findAll();
     }
 
-    // Método para obtener un empleado por DNI
     public Optional<Empleado> obtenerEmpleado(String dni) {
-        return empleadoRepository.findById(dni); // Encuentra un empleado por su ID (en este caso DNI)
+        return empleadoRepository.findById(dni);
     }
 
-    // Método para buscar empleados por parte de su DNI
     public List<Empleado> buscarEmpleadosPorDNI(String dni) {
-        return empleadoRepository.findByDniContaining(dni); // Busca empleados que contengan el DNI en su campo
+        return empleadoRepository.findByDniContaining(dni); 
     }
 
-    // Método para buscar empleados por cualquier criterio
     public List<Empleado> buscarEmpleadosPorCriterios(String criterio) {
-        return empleadoRepository.findByCriterio(criterio);  // Si defines una consulta personalizada en el repositorio
+        return empleadoRepository.findByCriterio(criterio);
     }
 
-    // Método para actualizar la información de un empleado
     public boolean actualizarEmpleado(Empleado empleado) {
         if (empleadoRepository.existsById(empleado.getDni())) {
-            empleadoRepository.save(empleado);  // Spring Data JPA se encarga de la actualización si el DNI ya existe
+            empleadoRepository.save(empleado);
             return true;
         }
         return false;
