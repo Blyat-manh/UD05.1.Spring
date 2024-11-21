@@ -1,11 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
- pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.AplicacionWebNominas.model.Empleado"%>
+<%@ page import="com.AplicacionWebNominas.model.NominaService"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Menu de Opciones</title>
-<style>* {
+    <meta charset="UTF-8">
+    <title>Resultados de Búsqueda</title>
+    <style type="text/css">
+    
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -52,7 +57,6 @@ table {
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     background-color: white;
-    margin-top: 100px;
 }
 
 table th, table td {
@@ -61,7 +65,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #3498db;
+    background-color: rgb(95, 158, 160);
     color: white;
     font-size: 1.2em;
 }
@@ -82,6 +86,7 @@ a {
     color: cadetblue;
     text-decoration: none;
     font-size: 20px;
+    margin-top: 50px;
 }
 
 a.pagination {
@@ -101,21 +106,37 @@ a.pagination:hover {
     color: white;
     cursor: pointer;
 }
-
-</style>
+  
+    </style>
 </head>
 <body>
-<h1>Menu Empresa</h1>
-  <table>
-  <tr>
-    <td><a href="EmpresaController?opcion=listar"> Listar Empleados</a></td>
-  </tr>
-  <tr>
-    <td><a href="EmpresaController?opcion=salario"> Mostrar Salario de un Empleado</a></td>
-  </tr>
-  <tr>
-    <td><a href="EmpresaController?opcion=editar"> Editar Empleados</a></td>
-</tr>
-</table>
+    <h1>Resultados de Búsqueda</h1>
+   <%
+    List<Empleado> empleados = (List<Empleado>) request.getAttribute("empleados");
+    if (empleados != null && !empleados.isEmpty()) {
+%>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Salario</th>
+        </tr>
+        <% for (Empleado empleado : empleados) { %>
+        <tr>
+            <td><%= empleado.getNombre() %></td>
+            <td><%= empleado.getDni() %></td>
+            <td><%= empleado.getSalario() %></td>
+        </tr>
+        <% } %>
+    </table>
+<%
+    } else {
+%>
+    <h3>No se encontraron empleados que coincidan con la búsqueda.</h3>
+<%
+    }
+%>
+
+    <a href="/Empresa">Volver</a>
 </body>
 </html>
