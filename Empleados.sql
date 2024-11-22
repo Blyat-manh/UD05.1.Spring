@@ -2,12 +2,12 @@ drop database gestionNominas2;
 create database gestionNominas2;
 use gestionNominas2;
 
-CREATE TABLE Nominas (
+CREATE TABLE nomina (
     categoria INT PRIMARY KEY,
     sueldo INT
 );
 
-INSERT INTO Nominas (categoria, sueldo) VALUES 
+INSERT INTO nomina (categoria, sueldo) VALUES 
 (1, 50000), 
 (2, 70000), 
 (3, 90000), 
@@ -25,15 +25,13 @@ CREATE TABLE empleado (
     dni VARCHAR(10) PRIMARY KEY,
     sexo CHAR(1),
     categoria INT,
-    anyos INT,
-   FOREIGN KEY (categoria) REFERENCES Nominas(categoria)
+    anyos INT
 );
 
 
-drop table Salarios;
+drop table salarios;
 
-CREATE TABLE Salarios (
+CREATE TABLE salarios (
     dni VARCHAR(10) PRIMARY KEY,
-    salario INT,
-    FOREIGN KEY (dni) REFERENCES empleado(dni)
+    salario INT
 );
